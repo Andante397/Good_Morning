@@ -2,3 +2,25 @@
 第9行：int *p = malloc(sizeof(int)); 
 应当改为：int *p = (int*) malloc(sizeof(int)); 
 仍然是这个代码，头文件“common.h”在调用时也有问题
+书后附录里的内容是：
+#ifndef __common_h__
+#define __common_h__
+
+#include <sys/time.h>
+#include <sys/stat.h>
+#include <assert.h>
+
+double GetTime() {
+    struct timeval t;
+    int rc = gettimeofday(&t, NULL);
+    assert(rc == 0);
+    return (double) t.tv_sec + (double) t.tv_usec/1e6;
+}
+
+void Spin(int howlong) {
+    double t = GetTime();
+    while ((GetTime() - t) < (double) howlong)
+	; // do nothing in loop
+}
+
+#endif // __common_h__

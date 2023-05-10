@@ -1,3 +1,4 @@
 一、Figure 2.3: A Program That Accesses Memory (mem.c)的代码直接运行会报错
 第9行：int *p = malloc(sizeof(int)); 
 应当改为：int *p = (int*) malloc(sizeof(int)); 
+仍然是这个代码，头文件“common.h”在调用时也有问题

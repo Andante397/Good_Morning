@@ -1,0 +1,3 @@
+一、Figure 2.3: A Program That Accesses Memory (mem.c)的代码直接运行会报错
+第9行：int *p = malloc(sizeof(int)); 
+应当改为：int *p = (int*) malloc(sizeof(int)); 
